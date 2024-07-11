@@ -1,16 +1,15 @@
-import data from "../data/animeList.json";
-
-export default function Card() {
-  const element = data[0];
+export default function Card({ itemData }) {
+  // const image = require("../data/" + itemData.anime_id + ".jpg");
   return (
-    <li>
+    <li className="p-2.5 shadow-my rounded basis-my flex flex-col grow-0 justify-end min-h-96">
       <img
-        src={require(`../data/${element.anime_id}.jpg`)}
-        alt={element.title}
+        className="mb-auto w-11/12 self-center"
+        src={itemData.image_url}
+        alt={itemData.title}
       />
-      <h2>{element.title}</h2>
-      <div>{element.type}</div>
-      <div>{element.score}</div>
+      <h2>{itemData.title}</h2>
+      <div>{itemData.type}</div>
+      <div>{itemData.score}</div>
     </li>
   );
 }
