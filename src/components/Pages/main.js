@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import data from "../data/animeList.json";
-import Card from "./Card";
+import data from "../../data/animeList.json";
+import Card from "../Card";
 
-export default function Main() {
+export default function MainPage() {
   const [listMax, setListMax] = useState(10);
   function spreadList() {
     return data.slice(0, listMax).map((el) => {

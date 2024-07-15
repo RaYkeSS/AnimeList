@@ -7,8 +7,8 @@ export default function Header() {
       <nav>
         <div></div>
         <div>
-          <a href="#">Anime</a>
-          <a href="#">Manga</a>
+          <a href="/anime">Anime</a>
+          <a href="/manga">Manga</a>
         </div>
       </nav>
       <Search />
