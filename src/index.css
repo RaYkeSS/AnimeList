@@ -1,5 +1,10 @@
 @tailwind base;
 @layer base {
+    :root {
+        --color-primary-bg: 18 23 37;
+        --color-scnd-bg: 18 35 45;
+        --color-third-bg: 54 130 127;
+    }
     * {
         @apply text-white;
     }
