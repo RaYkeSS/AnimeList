@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function MenuDropdown() {
   const styles = {
@@ -37,20 +38,20 @@ export default function MenuDropdown() {
     >
       <div className={styles.div}>Current Menu</div>
       <ul className={[showMenu, styles.ulDropdown].join(" ")}>
-        <li className={styles.li}>
-          <a className={styles.a} href="/">
+        {/* <li className={styles.li}>
+          <NavLink className={styles.a} to="/">
             Main
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/anime">Anime</a>
+          <NavLink to="/anime">Anime</NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/manga">Manga</a>
+          <NavLink to="/manga">Manga</NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/error">Error</a>
-        </li>
+          <NavLink to="/error">Error</NavLink>
+        </li> */}
       </ul>
     </nav>
   );

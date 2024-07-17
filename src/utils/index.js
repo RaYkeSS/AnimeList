@@ -1,2 +1,8 @@
 import DATA_ROOT from "../utils/animeList.json";
-export default DATA_ROOT;
+
+async function loader() {
+  const data = await DATA_ROOT;
+  return { data };
+}
+
+export { DATA_ROOT, loader };

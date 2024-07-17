@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ReactComponent as SearchIcon } from "./Search.svg";
+import { Link } from "react-router-dom";
 
-import DATA_ROOT from "../../utils";
+import { DATA_ROOT } from "../../../utils";
 
 export default function Search() {
   const styles = {
@@ -51,14 +52,15 @@ export default function Search() {
         setShowMore(<></>);
       }
       setFiltered(
-        fil.map((el) => {
+        fil.map(({ anime_id, image_url, title, type, score }) => {
+          // const link = `title/${anime_id}`;
           return (
-            <li className={styles.li}>
-              <img src={el.image_url} className={styles.img} alt={el.title} />
+            <li className={styles.li} key={anime_id}>
+              <img src={image_url} className={styles.img} alt={title} />
               <div className={styles.liWrapper}>
-                <h2 className={styles.h2}>{el.title}</h2>
-                <div>{el.type}</div>
-                <div>{el.score}</div>
+                <h2 className={styles.h2}>{title}</h2>
+                <div>{type}</div>
+                <div>{score}</div>
               </div>
             </li>
           );

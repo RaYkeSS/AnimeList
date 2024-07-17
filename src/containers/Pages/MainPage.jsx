@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-import DATA_ROOT from "../../utils";
+import { DATA_ROOT } from "../../utils";
 import { Card } from "../../components";
 
 export default function MainPage() {
   const styles = {
-    divWrapper: "container mx-auto",
     ulList: "flex flex-wrap justify-between gap-y-7 mb-5",
     btn: "p-2.5 shadow-my rounded w-full",
   };
@@ -16,11 +15,11 @@ export default function MainPage() {
     });
   }
   return (
-    <div className={styles.divWrapper}>
+    <>
       <ul className={styles.ulList}>{spreadList()}</ul>
       <button onClick={() => setListMax(listMax + 10)} className={styles.btn}>
         spreadList
       </button>
-    </div>
+    </>
   );
 }

@@ -1,26 +1,22 @@
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, Outlet } from "react-router-dom";
 
-// Pages
-import { MainPage, AnimePage, MangaPage, TitlePage, ErrorPage } from "../Pages";
+import { router } from "../../routes";
 
 import { Header, Footer } from "../../components";
 
 export default function App() {
   const styles = {
     divWrapper: "w-full min-h-screen bg-primaryBg/80 box-border",
+    container: "container mx-auto",
   };
-  const router = createBrowserRouter([
-    { path: "/", element: <MainPage />, errorElement: <ErrorPage /> },
-    { path: "/anime", element: <AnimePage /> },
-    { path: "/manga", element: <MangaPage /> },
-    { path: "/:type/:titleId", element: <TitlePage /> },
-  ]);
   return (
     <div className={styles.divWrapper}>
       <Header />
-      <RouterProvider router={router} />
-      {/* <Main /> */}
+      <div className={styles.container}>
+        <RouterProvider router={router} />
+      </div>
+      <Outlet />
       <Footer />
     </div>
   );

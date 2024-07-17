@@ -1,4 +1,6 @@
-import { Search, Auth, MenuDropdown } from "./index";
+import Search from "./Search/Search";
+import Auth from "./Auth/Auth";
+import MenuDropdown from "./MenuDropdown/MenuDropdown";
 
 export default function Header() {
   const styles = {
