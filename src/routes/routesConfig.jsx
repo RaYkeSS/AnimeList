@@ -7,13 +7,18 @@ import {
   TitlePage,
   ErrorPage,
 } from "../containers/Pages";
-// import { DATA_ROOT } from "../utils";
+
+import App from "../containers/App";
 
 const router = createBrowserRouter([
-  { path: "/", element: <MainPage />, errorElement: <ErrorPage /> },
-  { path: "/anime", element: <AnimePage /> },
-  { path: "/manga", element: <MangaPage /> },
-  { path: "/title/:titleId", element: <TitlePage /> },
+  { path: "/", element: <App />, errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <MainPage />, name: 'Main' },
+      { path: "/anime", element: <AnimePage />, name: 'Anime' },
+      { path: "/manga", element: <MangaPage />, name: 'Manga' },
+      { path: "/title/:titleId", element: <TitlePage /> },
+    ]
+   },
 ]);
 
 export default router;

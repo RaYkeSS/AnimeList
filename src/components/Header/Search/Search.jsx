@@ -13,7 +13,8 @@ export default function Search() {
     span: "absolute left-1 stroke-white",
     ulList:
       "absolute top-11 w-full z-10 max-h-96 overflow-y-scroll rounded scrollbar-hide bg-scndBg/90",
-    li: "text-inherit p-2.5 shadow-my rounded bg-scndBg/90 flex gap-5 items-center mb-px",
+    li: "text-inherit p-2.5 shadow-my rounded bg-scndBg/90",
+    link: 'flex gap-5 items-center mb-px',
     liShowMore:
       "text-inherit p-2.5 shadow-my rounded bg-scndBg/90 flex gap-5 items-center justify-center w-full",
     img: "w-16",
@@ -23,9 +24,11 @@ export default function Search() {
   const [filtered, setFiltered] = useState(<></>);
   const [showMore, setShowMore] = useState(<></>);
   const [showFiltered, setShowFiltered] = useState("hidden");
+  const [inputValue, setInputValue] = useState("");
   function filteredSearch(event) {
+    setInputValue(event.target.value)
     setTimeout(() => {
-      const wordToSearch = event.target.value;
+      const wordToSearch = inputValue;
       const regex = new RegExp(wordToSearch, "gi");
       if (!wordToSearch) {
         setShowFiltered("hidden");
@@ -53,15 +56,16 @@ export default function Search() {
       }
       setFiltered(
         fil.map(({ anime_id, image_url, title, type, score }) => {
-          // const link = `title/${anime_id}`;
           return (
             <li className={styles.li} key={anime_id}>
-              <img src={image_url} className={styles.img} alt={title} />
-              <div className={styles.liWrapper}>
-                <h2 className={styles.h2}>{title}</h2>
-                <div>{type}</div>
-                <div>{score}</div>
-              </div>
+              <Link className={styles.link} to={"/title/" + anime_id}>
+                <img src={image_url} className={styles.img} alt={title} />
+                <div className={styles.liWrapper}>
+                  <h2 className={styles.h2}>{title}</h2>
+                  <div>{type}</div>
+                  <div>{score}</div>
+                </div>
+              </Link>
             </li>
           );
         })
@@ -69,20 +73,33 @@ export default function Search() {
       setShowFiltered("block");
     }, 200);
   }
+  function handleClearResults() {
+    setFiltered(<></>)
+    setShowMore(<></>)
+    setInputValue('')
+  }
   return (
-    <div className={styles.divWrapper}>
+    <div
+      className={styles.divWrapper} 
+      onFocus={()=>setShowFiltered("block")}
+      onBlur={()=>setTimeout(() => {
+        setShowFiltered("hidden")
+      }, 100)}>
       <label className={styles.label}>
         <input
           className={styles.input}
           placeholder="Search..."
           type="text"
+          value={inputValue}
           onChange={filteredSearch}
         ></input>
         <span className={styles.span}>
           <SearchIcon />
         </span>
       </label>
-      <ul className={[showFiltered, styles.ulList].join(" ")}>
+      <ul 
+      onClick={handleClearResults} 
+       className={[showFiltered, styles.ulList].join(" ")}>
         {filtered}
         {showMore}
       </ul>

@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function MenuDropdown() {
+  const location = useLocation();
+  function setPath() {
+    if(location.pathname === '/') return 'Main'
+    const rawPath = location.pathname.slice(1, location.pathname.length);
+    const path = rawPath.charAt(0).toUpperCase() + rawPath.slice(1)
+    return path
+  }
   const styles = {
     nav: "relative rounded bg-scndBg/90",
-    div: "p-1.5",
+    div: "p-1.5 min-w-20 text-center",
     ulDropdown: `
     z-1 
     absolute 
@@ -19,8 +27,8 @@ export default function MenuDropdown() {
     rounded
     p-1.5
     `,
-    li: "rounded p-1.5 hover:bg-thirdBg/90",
-    a: "",
+    li: "rounded hover:bg-thirdBg/90",
+    a: "p-1.5 block",
   };
 
   const [showMenu, setShowMenu] = useState("hidden");
@@ -36,22 +44,22 @@ export default function MenuDropdown() {
       onMouseOver={handleShowDropdown}
       onMouseLeave={handleHideDropdown}
     >
-      <div className={styles.div}>Current Menu</div>
+      <div className={styles.div}>{setPath()}</div>
       <ul className={[showMenu, styles.ulDropdown].join(" ")}>
-        {/* <li className={styles.li}>
+        <li className={styles.li}>
           <NavLink className={styles.a} to="/">
             Main
           </NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink to="/anime">Anime</NavLink>
+          <NavLink className={styles.a} to="/anime">Anime</NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink to="/manga">Manga</NavLink>
+          <NavLink className={styles.a} to="/manga">Manga</NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink to="/error">Error</NavLink>
-        </li> */}
+          <NavLink className={styles.a} to="/error">Error</NavLink>
+        </li>
       </ul>
     </nav>
   );
