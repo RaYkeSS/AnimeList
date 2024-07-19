@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import StarRating from "../../components/TitlePage/StarRating/StarRating";
+
 import { DATA_ROOT } from "../../utils";
 
 export default function TitlePage() {
@@ -50,6 +52,7 @@ export default function TitlePage() {
       <div className={styles.wrapper}>
         <div>
           <img src={image_url} alt={title} />
+          <StarRating />
           <div>{anime_id}</div>
         </div>
         <div>
@@ -63,6 +66,7 @@ export default function TitlePage() {
         <div>
           <div>
             <h3 className={styles.h3}>Rating</h3>
+            <StarRating readOnly={true} defaultState={score} maxValue={10} />
             <div>{score}</div>
           </div>
           <div>

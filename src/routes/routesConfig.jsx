@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       { path: "/", element: <MainPage />, name: 'Main' },
       { path: "/anime", element: <AnimePage />, name: 'Anime' },
       { path: "/manga", element: <MangaPage />, name: 'Manga' },
-      { path: "/title/:titleId", element: <TitlePage /> },
+      { path: "/anime/:titleId", element: <TitlePage /> },
     ]
    },
 ]);

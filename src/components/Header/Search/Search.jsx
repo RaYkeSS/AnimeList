@@ -58,7 +58,7 @@ export default function Search() {
         fil.map(({ anime_id, image_url, title, type, score }) => {
           return (
             <li className={styles.li} key={anime_id}>
-              <Link className={styles.link} to={"/title/" + anime_id}>
+              <Link className={styles.link} to={"/anime/" + anime_id}>
                 <img src={image_url} className={styles.img} alt={title} />
                 <div className={styles.liWrapper}>
                   <h2 className={styles.h2}>{title}</h2>

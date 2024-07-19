@@ -27,8 +27,9 @@ export default function MenuDropdown() {
     rounded
     p-1.5
     `,
-    li: "rounded hover:bg-thirdBg/90",
-    a: "p-1.5 block",
+    li: "",
+    a: "p-1.5 block hover:bg-thirdBg/90 rounded",
+    activeLink: 'p-1.5 block bg-primaryBg/90 rounded'
   };
 
   const [showMenu, setShowMenu] = useState("hidden");
@@ -47,18 +48,18 @@ export default function MenuDropdown() {
       <div className={styles.div}>{setPath()}</div>
       <ul className={[showMenu, styles.ulDropdown].join(" ")}>
         <li className={styles.li}>
-          <NavLink className={styles.a} to="/">
+          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/">
             Main
           </NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={styles.a} to="/anime">Anime</NavLink>
+          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/anime">Anime</NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={styles.a} to="/manga">Manga</NavLink>
+          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/manga">Manga</NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={styles.a} to="/error">Error</NavLink>
+          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/error">Error</NavLink>
         </li>
       </ul>
     </nav>

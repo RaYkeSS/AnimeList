@@ -5,4 +5,4 @@ export { default as Card } from "./Card";
 export { default as Search } from "./Header/Search/Search";
 export { default as Auth } from "./Header/Auth/Auth";
 export { default as MenuDropdown } from "./Header/MenuDropdown/MenuDropdown";
-export { default as StarRating } from "./TitlePage/StarRating";
+export { default as StarRating } from "./TitlePage/StarRating/StarRating";
