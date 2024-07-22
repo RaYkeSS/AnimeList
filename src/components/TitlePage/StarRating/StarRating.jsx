@@ -6,9 +6,11 @@ import StarList from "./StarList";
 const StarRating = ({
   defaultScore = 0,
   emptyColor = "grey",
-  fillColor = "yellow",
-  labelText = (value) => `MAL Score: ${value}`,
+  fillColor = "#edaa10",
+  hoverColor = "#ffb712",
+  labelTextFn = (value) => `Your Score: ${value}`,
   readOnly = false,
+  pointer = true,
   maxStars = 5,
 }) => {
   const [score, setScore] = useState(null);
@@ -18,13 +20,15 @@ const StarRating = ({
   }, [defaultScore]);
   return (
     <>
-      <div>{labelText(score)}</div>
+      <div>{labelTextFn(score)}</div>
       <StarList
         emptyColor={emptyColor}
         fillColor={fillColor}
+        hoverColor={hoverColor}
         score={score}
         setScore={setScore}
         readOnly={readOnly}
+        pointer={pointer}
         maxStars={maxStars}
       />
     </>
@@ -35,6 +39,7 @@ StarRating.propTypes = {
   defaultScore: PropTypes.number,
   emptyColor: PropTypes.string,
   fillColor: PropTypes.string,
+  hoverColor: PropTypes.string,
   labelText: PropTypes.func,
   readOnly: PropTypes.bool,
 };

@@ -2,63 +2,73 @@ import { useState } from "react";
 import Star from "./Star";
 
 const StarList = ({
-  defaultScore,
   emptyColor,
   fillColor,
+  hoverColor,
   score,
   setScore,
   readOnly,
+  pointer,
   maxStars,
 }) => {
   const styles = {
-    firstHalf: "top-2/4 -translate-x-1/2 left-1/4 -translate-y-2/4 w-2/4 h-2/4",
+    zero: "absolute top-2/4 -translate-x-1/2 left-0 -translate-y-2/4 h-full z-10 opacity-0",
+    firstHalf: "absolute top-2/4 -translate-x-1/2 left-1/4 -translate-y-2/4 w-2/4 h-full z-10 opacity-0",
     secondHalf:
-      "top-2/4 -translate-x-1/2 left-3/4 -translate-y-2/4 w-2/4 h-2/4",
+      "absolute top-2/4 -translate-x-1/2 left-3/4 -translate-y-2/4 w-2/4 h-full z-10 opacity-0",
+    pointerStyle: ' cursor-pointer'
   };
   const [hover, setHover] = useState();
   function handleClick(event) {
     if (readOnly) return;
     event.preventDefault();
     setScore(event.target.value);
-    console.log(score);
+    console.log(hover, score);
   }
   function handleHover(event) {
     if (readOnly) return;
     event.preventDefault();
     setHover(event.target.value);
-    console.log(hover);
   }
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center relative">
+
         <input
-          className=""
+          className={pointer ? styles.zero + styles.pointerStyle : styles.zero}
           type="radio"
           onClick={handleClick}
-          defaultValue={0}
+          onMouseEnter={(e) => e.preventDefault()}
+          defaultValue={'unset'}
         />
+
         {[...Array(maxStars)].map((el, index) => {
           return (
-            <div key={index} className="relative hover:bg-primaryBg">
+            <div key={index} className="relative">
               <Star
-                classes={styles.firstHalf}
+                classes={pointer ? styles.firstHalf + styles.pointerStyle : styles.firstHalf}
                 handleClick={handleClick}
                 handleHover={handleHover}
                 emptyColor={emptyColor}
                 fillColor={fillColor}
-                defaultValue={index + 0.5}
+                hoverColor={hoverColor}
+                defaultValue={(index + 1) * 2 - 1}
                 score={score}
                 hover={hover}
+                setHover={setHover}
               />
               <Star
-                classes={styles.secondHalf}
+                classes={pointer ? styles.secondHalf + styles.pointerStyle : styles.secondHalf}
                 handleClick={handleClick}
+                handleHover={handleHover}
                 emptyColor={emptyColor}
                 fillColor={fillColor}
-                defaultValue={index + 1}
+                hoverColor={hoverColor}
+                defaultValue={(index + 1) * 2}
                 isSecond
                 score={score}
                 hover={hover}
+                setHover={setHover}
               />
             </div>
           );
