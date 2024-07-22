@@ -1,86 +1,42 @@
-import React, { useState, createContext } from "react";
-import PropTypes from 'prop-types';
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-import StarRatingLabel from './StarRatingLabel';
-import StarList from './StarList';
+import StarList from "./StarList";
 
-export const StarRatingContext = createContext();
+const StarRating = ({
+  defaultScore = 0,
+  emptyColor = "grey",
+  fillColor = "yellow",
+  labelText = (value) => `MAL Score: ${value}`,
+  readOnly = false,
+  maxStars = 5,
+}) => {
+  const [score, setScore] = useState(null);
 
-export default function StarRating({
-  defaultState,
-  emptyColor,
-  fillColor,
-  height,
-  labelText,
-  maxValue,
-  onChangeHover,
-  onChangeValue,
-  readOnly,
-  width,
-}) {
-  const [rating, setRating] = useState(defaultState);
-  const [hover, setHover] = useState(null);
-
-  const setRatingFn = (value) => {
-    if (readOnly) return;
-
-    setRating(value);
-    onChangeValue(value);
-  }
-
-  const setHoverFn = (value) => {
-    if (readOnly) return;
-
-    setHover(value);
-    onChangeHover(value);
-  }
+  useEffect(() => {
+    setScore(defaultScore);
+  }, [defaultScore]);
   return (
     <>
-      <StarRatingContext.Provider
-        value={{
-          emptyColor,
-          fillColor,
-          height,
-          hover,
-          labelText,
-          rating,
-          setHover: setHoverFn,
-          setRating: setRatingFn,
-          width,
-          maxValue,
-        }}
-      >
-        <>
-          <StarRatingLabel />
-          <StarList />
-        </>
-      </StarRatingContext.Provider>
+      <div>{labelText(score)}</div>
+      <StarList
+        emptyColor={emptyColor}
+        fillColor={fillColor}
+        score={score}
+        setScore={setScore}
+        readOnly={readOnly}
+        maxStars={maxStars}
+      />
     </>
   );
-}
+};
 
 StarRating.propTypes = {
-  defaultState: PropTypes.number,
+  defaultScore: PropTypes.number,
   emptyColor: PropTypes.string,
   fillColor: PropTypes.string,
-  height: PropTypes.number,
   labelText: PropTypes.func,
-  maxValue: PropTypes.number,
-  onChangeHover: PropTypes.func,
-  onChangeValue: PropTypes.func,
   readOnly: PropTypes.bool,
-  width: PropTypes.number,
 };
 
-StarRating.defaultProps = {
-  defaultState: 0,
-  emptyColor: "grey",
-  fillColor: "#edaa10",
-  height: 53,
-  labelText: (value) => `Rating is: ${value}`,
-  maxValue: 5,
-  onChangeHover: () => {},
-  onChangeValue: () => {},
-  readOnly: false,
-  width: 53,
-};
+export default StarRating;

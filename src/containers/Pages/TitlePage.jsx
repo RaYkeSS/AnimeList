@@ -66,7 +66,7 @@ export default function TitlePage() {
         <div>
           <div>
             <h3 className={styles.h3}>Rating</h3>
-            <StarRating readOnly={true} defaultState={score} maxValue={10} />
+            <StarRating readOnly={true} defaultValue={score} />
             <div>{score}</div>
           </div>
           <div>
