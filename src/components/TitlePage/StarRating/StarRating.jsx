@@ -12,6 +12,8 @@ const StarRating = ({
   readOnly = false,
   pointer = true,
   maxStars = 5,
+  width = "4em",
+  height = "4em",
 }) => {
   const [score, setScore] = useState(null);
 
@@ -30,6 +32,8 @@ const StarRating = ({
         readOnly={readOnly}
         pointer={pointer}
         maxStars={maxStars}
+        width={width}
+        height={height}
       />
     </>
   );
@@ -40,8 +44,12 @@ StarRating.propTypes = {
   emptyColor: PropTypes.string,
   fillColor: PropTypes.string,
   hoverColor: PropTypes.string,
-  labelText: PropTypes.func,
+  labelTextFn: PropTypes.func,
   readOnly: PropTypes.bool,
+  pointer: PropTypes.bool,
+  maxStars: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default StarRating;

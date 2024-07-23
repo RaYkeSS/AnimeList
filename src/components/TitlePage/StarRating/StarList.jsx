@@ -10,13 +10,16 @@ const StarList = ({
   readOnly,
   pointer,
   maxStars,
+  width,
+  height,
 }) => {
   const styles = {
     zero: "absolute top-2/4 -translate-x-1/2 left-0 -translate-y-2/4 h-full z-10 opacity-0",
-    firstHalf: "absolute top-2/4 -translate-x-1/2 left-1/4 -translate-y-2/4 w-2/4 h-full z-10 opacity-0",
+    firstHalf:
+      "absolute top-2/4 -translate-x-1/2 left-1/4 -translate-y-2/4 w-2/4 h-full z-10 opacity-0",
     secondHalf:
       "absolute top-2/4 -translate-x-1/2 left-3/4 -translate-y-2/4 w-2/4 h-full z-10 opacity-0",
-    pointerStyle: ' cursor-pointer'
+    pointerStyle: " cursor-pointer",
   };
   const [hover, setHover] = useState();
   function handleClick(event) {
@@ -33,20 +36,23 @@ const StarList = ({
   return (
     <>
       <div className="flex items-center justify-center relative">
-
         <input
           className={pointer ? styles.zero + styles.pointerStyle : styles.zero}
           type="radio"
           onClick={handleClick}
           onMouseEnter={(e) => e.preventDefault()}
-          defaultValue={'unset'}
+          defaultValue={"unset"}
         />
 
         {[...Array(maxStars)].map((el, index) => {
           return (
             <div key={index} className="relative">
               <Star
-                classes={pointer ? styles.firstHalf + styles.pointerStyle : styles.firstHalf}
+                classes={
+                  pointer
+                    ? styles.firstHalf + styles.pointerStyle
+                    : styles.firstHalf
+                }
                 handleClick={handleClick}
                 handleHover={handleHover}
                 emptyColor={emptyColor}
@@ -56,9 +62,15 @@ const StarList = ({
                 score={score}
                 hover={hover}
                 setHover={setHover}
+                width={width}
+                height={height}
               />
               <Star
-                classes={pointer ? styles.secondHalf + styles.pointerStyle : styles.secondHalf}
+                classes={
+                  pointer
+                    ? styles.secondHalf + styles.pointerStyle
+                    : styles.secondHalf
+                }
                 handleClick={handleClick}
                 handleHover={handleHover}
                 emptyColor={emptyColor}
@@ -69,6 +81,8 @@ const StarList = ({
                 score={score}
                 hover={hover}
                 setHover={setHover}
+                width={width}
+                height={height}
               />
             </div>
           );

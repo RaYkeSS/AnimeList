@@ -7,74 +7,84 @@ import { DATA_ROOT } from "../../utils";
 
 export default function TitlePage() {
   const { titleId } = useParams();
-  const elem = DATA_ROOT.find((el) => Number(el.anime_id) === Number(titleId));
-  const {
-    anime_id,
-    image_url,
-    title,
-    title_english,
-    title_japanese,
-    title_synonyms,
-    type,
-    source,
-    episodes,
-    status,
-    airing,
-    aired_string,
-    aired,
-    duration,
-    rating,
-    score,
-    scored_by,
-    rank,
-    popularity,
-    favorites,
-    background,
-    premiered,
-    broadcast,
-    related,
-    producer,
-    licensor,
-    studio,
-    genre,
-    opening_theme,
-    ending_theme,
-  } = elem;
+  const [elem, setElem] = useState(null);
   const styles = {
     container: "container mx-auto",
     wrapper: "flex gap-10 justify-between",
     h1: "mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white",
     h3: "text-3xl",
   };
+  // const {
+  //   anime_id,
+  //   image_url,
+  //   title,
+  //   title_english,
+  //   title_japanese,
+  //   title_synonyms,
+  //   type,
+  //   source,
+  //   episodes,
+  //   status,
+  //   airing,
+  //   aired_string,
+  //   aired,
+  //   duration,
+  //   rating,
+  //   score,
+  //   scored_by,
+  //   rank,
+  //   popularity,
+  //   favorites,
+  //   background,
+  //   premiered,
+  //   broadcast,
+  //   related,
+  //   producer,
+  //   licensor,
+  //   studio,
+  //   genre,
+  //   opening_theme,
+  //   ending_theme,
+  // } = elem;
+  useEffect(() => {
+    setElem(DATA_ROOT.find((el) => Number(el.anime_id) === Number(titleId)));
+  }, [titleId]);
   return (
-    <>
-      <h1 className={styles.h1}>{title}</h1>
-      <div className={styles.wrapper}>
-        <div>
-          <img src={image_url} alt={title} />
-          <StarRating />
-          <div>{anime_id}</div>
-        </div>
-        <div>
-          <h3 className={styles.h3}>Information</h3>
-          <div>Type: {type}</div>
-          <div>Episodes: {episodes}</div>
-          <div>Episode Duration: {duration}</div>
-          <div>Status: {status}</div>
-          <div>Genres: {genre}</div>
-        </div>
-        <div>
+    elem && (
+      <>
+        <h1 className={styles.h1}>{elem.title}</h1>
+        <div className={styles.wrapper}>
           <div>
-            <h3 className={styles.h3}>Rating</h3>
-            <StarRating readOnly defaultScore={score} pointer={false} labelTextFn={()=>`MAL score: ${score}`} />
+            <img src={elem.image_url} alt={elem.title} />
+            <StarRating />
+            <div>{elem.anime_id}</div>
           </div>
           <div>
-            <h3 className={styles.h3}>Studio</h3>
-            <div>{studio}</div>
+            <h3 className={styles.h3}>Information</h3>
+            <div>Type: {elem.type}</div>
+            <div>Episodes: {elem.episodes}</div>
+            <div>Episode Duration: {elem.duration}</div>
+            <div>Status: {elem.status}</div>
+            <div>Genres: {elem.genre}</div>
+          </div>
+          <div>
+            <div>
+              <h3 className={styles.h3}>Rating</h3>
+              <StarRating
+                readOnly
+                defaultScore={elem.score}
+                pointer={false}
+                labelTextFn={() => `MAL score: ${elem.score}`}
+              />
+            </div>
+            <div>
+              <h3 className={styles.h3}>Studio</h3>
+              <div>{elem.studio}</div>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 }
 
