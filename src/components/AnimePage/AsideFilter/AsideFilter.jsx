@@ -15,27 +15,39 @@ export default function AsideFilter() {
     "popularity",
     "genre",
   ];
-  useEffect(() => {
-    function gatherFilters() {
-      const result = new Map();
-      DATA_ROOT.map((el) => {
-        filteredName.map((filEl) => {
-          result.set(filEl, Array.push(el[filEl]));
-        });
-      });
-      console.log(result);
-      return result;
-    }
-    setFilters(gatherFilters());
-  }, []);
+  // useEffect(() => {
+  //   function gatherFilters() {
+  //     const result = new Map();
+  //     // DATA_ROOT.map((el) => {
+  //     //   filteredName.map((filEl) => {
+  //     //     result.set(filEl, Array.push(el[filEl]));
+  //     //   });
+  //     // });
+  //     console.log(result);
+  //     return result;
+  //   }
+  //   setFilters(gatherFilters());
+  // }, []);
   return (
     <>
-      <div className="min-w-52 p-2.5 shadow-my rounded">AsideFilter</div>
-      <div>
-        {/* {filters &&
-          filters.map((el) => {
-            return <li>{el}</li>;
-          })} */}
+      <div className="min-w-52 p-2.5 shadow-my rounded">
+        <fieldset>
+          <legend>Year:</legend>
+          <label>
+            <input type="radio" />
+            <div>2010</div>
+          </label>
+
+          <label>
+            <input type="radio" />
+            <div>2010</div>
+          </label>
+
+          <label>
+            <input type="radio" />
+            <div>2010</div>
+          </label>
+        </fieldset>
       </div>
     </>
   );
