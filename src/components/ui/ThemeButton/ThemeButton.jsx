@@ -3,25 +3,31 @@ import { ReactComponent as Moon } from "./img/moon.svg";
 import { ReactComponent as Sun } from "./img/sun.svg";
 
 export default function ThemeButton() {
-  const [theme, setTheme] = useState("");
+  const [isDark, setIsDark] = useState(false)
   function handleClick() {
-    document.body.className = theme;
+    if (document.body.classList.contains('dark')) {
+      document.body.classList.remove('dark');
+      setIsDark(false)
+    } else {
+      setIsDark(true)
+      document.body.className = 'dark';
+    }
   }
   useEffect(() => {
     if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      setTheme("dark");
-      document.body.className = theme;
+      document.body.className = "dark";
+      setIsDark(true)
     }
-  }, [theme]);
+  }, []);
   return (
     <button
       className="p-0.5 rounded bg-lightPrimary text-lightBg dark:bg-scndBg/90 dark:text-white"
       onClick={handleClick}
     >
-      <Moon className="" />
+      {isDark ? <Moon /> : <Sun />}
     </button>
   );
 }
