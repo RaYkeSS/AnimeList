@@ -6,17 +6,17 @@ import { DATA_ROOT } from "../../../utils";
 
 export default function Search() {
   const styles = {
-    divWrapper: "flex-1 relative",
-    label: "pl-8 py-1 text-white stroke-gray-300 block rounded-xl bg-scndBg/90",
-    input:
-      "bg-transparent placeholder-gray-300 outline-none text-inherit w-full",
+    divWrapper: "flex-1 relative text-lightBg dark:text-white",
+    label:
+      "pl-8 py-1 stroke-gray-300 block rounded-xl bg-lightPrimary dark:bg-scndBg/90",
+    input: "bg-transparent placeholder-lightBg outline-none w-full",
     span: "absolute left-1 stroke-white",
     ulList:
-      "absolute top-11 w-full z-10 max-h-96 overflow-y-scroll rounded scrollbar-hide bg-scndBg/90",
-    li: "text-inherit p-2.5 shadow-my rounded bg-scndBg/90",
-    link: 'flex gap-5 items-center mb-px',
+      "absolute top-11 w-full z-10 max-h-96 overflow-y-scroll rounded scrollbar-hide bg-lightPrimary dark:bg-scndBg/90",
+    li: "text-inherit p-2.5 shadow-my rounded bg-lightPrimary dark:bg-scndBg/90",
+    link: "flex gap-5 items-center mb-px",
     liShowMore:
-      "text-inherit p-2.5 shadow-my rounded bg-scndBg/90 flex gap-5 items-center justify-center w-full",
+      "text-inherit p-2.5 shadow-my rounded bg-lightPrimary dark:bg-scndBg/90 flex gap-5 items-center justify-center w-full",
     img: "w-16",
     liWrapper: "flex flex-col",
     h2: "text-inherit",
@@ -26,7 +26,7 @@ export default function Search() {
   const [showFiltered, setShowFiltered] = useState("hidden");
   const [inputValue, setInputValue] = useState("");
   function filteredSearch(event) {
-    setInputValue(event.target.value)
+    setInputValue(event.target.value);
     setTimeout(() => {
       const wordToSearch = inputValue;
       const regex = new RegExp(wordToSearch, "gi");
@@ -74,17 +74,20 @@ export default function Search() {
     }, 200);
   }
   function handleClearResults() {
-    setFiltered(<></>)
-    setShowMore(<></>)
-    setInputValue('')
+    setFiltered(<></>);
+    setShowMore(<></>);
+    setInputValue("");
   }
   return (
     <div
-      className={styles.divWrapper} 
-      onFocus={()=>setShowFiltered("block")}
-      onBlur={()=>setTimeout(() => {
-        setShowFiltered("hidden")
-      }, 100)}>
+      className={styles.divWrapper}
+      onFocus={() => setShowFiltered("block")}
+      onBlur={() =>
+        setTimeout(() => {
+          setShowFiltered("hidden");
+        }, 100)
+      }
+    >
       <label className={styles.label}>
         <input
           className={styles.input}
@@ -97,9 +100,10 @@ export default function Search() {
           <SearchIcon />
         </span>
       </label>
-      <ul 
-      onClick={handleClearResults} 
-       className={[showFiltered, styles.ulList].join(" ")}>
+      <ul
+        onClick={handleClearResults}
+        className={[showFiltered, styles.ulList].join(" ")}
+      >
         {filtered}
         {showMore}
       </ul>

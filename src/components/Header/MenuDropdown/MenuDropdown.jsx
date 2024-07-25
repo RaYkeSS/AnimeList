@@ -5,13 +5,13 @@ import { useLocation } from "react-router-dom";
 export default function MenuDropdown() {
   const location = useLocation();
   function setPath() {
-    if(location.pathname === '/') return 'Main'
+    if (location.pathname === "/") return "Main";
     const rawPath = location.pathname.slice(1, location.pathname.length);
-    const path = rawPath.charAt(0).toUpperCase() + rawPath.slice(1)
-    return path
+    const path = rawPath.charAt(0).toUpperCase() + rawPath.slice(1);
+    return path;
   }
   const styles = {
-    nav: "relative rounded bg-scndBg/90",
+    nav: "relative rounded bg-lightPrimary text-lightBg dark:bg-scndBg/90 dark:text-white",
     div: "p-1.5 min-w-20 text-center",
     ulDropdown: `
     z-1 
@@ -20,16 +20,17 @@ export default function MenuDropdown() {
     left-1/2 
     transform 
     -translate-x-1/2 
-    flex flex-col 
-    bg-scndBg/90 
+    flex flex-col
+    bg-lightPrimary
+    dark:bg-scndBg/90 
     w-full 
     text-center 
     rounded
     p-1.5
     `,
     li: "",
-    a: "p-1.5 block hover:bg-thirdBg/90 rounded",
-    activeLink: 'p-1.5 block bg-primaryBg/90 rounded'
+    a: "p-1.5 block hover:bg-lightAccent dark:hover:bg-thirdBg/90 rounded",
+    activeLink: "p-1.5 block bg-lightAccent dark:bg-primaryBg/90 rounded",
   };
 
   const [showMenu, setShowMenu] = useState("hidden");
@@ -48,18 +49,44 @@ export default function MenuDropdown() {
       <div className={styles.div}>{setPath()}</div>
       <ul className={[showMenu, styles.ulDropdown].join(" ")}>
         <li className={styles.li}>
-          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.a
+            }
+            to="/"
+          >
             Main
           </NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/anime">Anime</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.a
+            }
+            to="/anime"
+          >
+            Anime
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/manga">Manga</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.a
+            }
+            to="/manga"
+          >
+            Manga
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <NavLink className={({ isActive }) => isActive ? styles.activeLink : styles.a} to="/error">Error</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.a
+            }
+            to="/error"
+          >
+            Error
+          </NavLink>
         </li>
       </ul>
     </nav>

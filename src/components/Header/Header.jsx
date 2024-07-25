@@ -3,6 +3,7 @@ import Auth from "./Auth/Auth";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
 
 import logo from "./img/logo.png";
+import ThemeButton from "../ui/ThemeButton/ThemeButton";
 
 export default function Header() {
   const styles = {
@@ -15,6 +16,7 @@ export default function Header() {
       <MenuDropdown />
       <Search />
       <Auth />
+      <ThemeButton />
     </header>
   );
 }
