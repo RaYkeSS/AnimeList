@@ -4,6 +4,7 @@ import MenuDropdown from "./MenuDropdown/MenuDropdown";
 
 import logo from "./img/logo.png";
 import ThemeButton from "../ui/ThemeButton/ThemeButton";
+import FavoriteButton from "../ui/FavoriteLink/FavoriteLink";
 
 export default function Header() {
   const styles = {
@@ -15,6 +16,7 @@ export default function Header() {
       <img src={logo} alt="logo" className={styles.logo} />
       <MenuDropdown />
       <Search />
+      <FavoriteButton />
       <Auth />
       <ThemeButton />
     </header>
