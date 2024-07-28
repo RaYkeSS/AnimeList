@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { add } from '../../redux/reducers/favoriteReducer'
 
 import StarRating from "../../components/TitlePage/StarRating/StarRating";
 
@@ -8,11 +11,13 @@ import { DATA_ROOT } from "../../utils";
 export default function TitlePage() {
   const { titleId } = useParams();
   const [elem, setElem] = useState(null);
+  const dispatch = useDispatch()
   const styles = {
     container: "container mx-auto",
     wrapper: "flex gap-10 justify-between",
     h1: "mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white",
     h3: "text-3xl",
+    button: 'p-2 rounded text-lightBg dark:text-white bg-lightPrimary text-lightBg dark:bg-scndBg/90 dark:text-white'
   };
   // const {
   //   anime_id,
@@ -58,6 +63,7 @@ export default function TitlePage() {
             <img src={elem.image_url} alt={elem.title} />
             <StarRating />
             <div>{elem.anime_id}</div>
+            <button className={styles.button} onClick={() => dispatch(add(elem.anime_id))}>Add</button>
           </div>
           <div>
             <h3 className={styles.h3}>Information</h3>

@@ -3,8 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const favoriteSlice = createSlice({
   name: "favorite",
   initialState: {
-    list: "",
+    favList: [],
   },
-  reducers: {},
+  reducers: {
+    add: (state, action) => {
+      state.favList = [...state.favList, action.payload];
+    },
+    // decrement: (state) => {
+    //   state.value -= 1;
+    // },
+    // incrementByAmount: (state, action) => {
+    //   state.value += action.payload;
+    // },
+  },
 });
-export default function favoriteReducer() {}
+
+export const { add } = favoriteSlice.actions;
+
+export default favoriteSlice.reducer;
