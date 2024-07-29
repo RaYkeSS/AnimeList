@@ -15,7 +15,7 @@ export default function Footer() {
         <span>© RaykeSS</span>
       </div>
       <FooterNav />
-      <div>v.0.0.1</div>
+      <div>v.0.1.1</div>
     </footer>
   );
 }
