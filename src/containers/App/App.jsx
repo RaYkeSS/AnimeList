@@ -2,6 +2,7 @@ import * as ReactDOM from "react-dom/client";
 import { Outlet } from "react-router-dom";
 
 import { Header, Footer } from "../../components";
+import ToTheTopButton from "../../components/ui/ToTheTopButton/ToTheTopButton";
 
 export default function App() {
   const styles = {
@@ -15,6 +16,7 @@ export default function App() {
       <div className={styles.container}>
         <Outlet />
       </div>
+      <ToTheTopButton />
       <Footer />
     </div>
   );
