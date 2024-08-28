@@ -22,7 +22,7 @@ export default function AnimePage() {
         <li>Auth</li>
         <li>Filter</li>
         <li>Anime pages division</li>
-        <li>To the top button</li>
+        <li><s>To the top button</s></li>
       </ul>
     </div>
   );
