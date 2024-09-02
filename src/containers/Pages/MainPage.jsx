@@ -12,8 +12,8 @@ export default function AnimePage() {
         <li>
           <s>Fav btn</s>
         </li>
-        <li>Favorite redux</li>
-        <li>Favorite Change status</li>
+        <li><s>Favorite redux</s></li>
+        <li><s>Favorite Change status</s></li>
         <li>Favorite Add rating</li>
         <li>Favorite Local storage</li>
         <li>Search show more</li>

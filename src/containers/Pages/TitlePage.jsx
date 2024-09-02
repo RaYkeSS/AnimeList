@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { add } from '../../redux/reducers/favoriteReducer'
+import store from "../../redux/store";
+import { addFavorite, removeFavorite } from '../../redux/reducers/favoriteReducer'
 
 import StarRating from "../../components/TitlePage/StarRating/StarRating";
 
@@ -11,7 +12,18 @@ import { DATA_ROOT } from "../../utils";
 export default function TitlePage() {
   const { titleId } = useParams();
   const [elem, setElem] = useState(null);
+  const [toFavBtn, setToFavBtn] = useState(true);
   const dispatch = useDispatch()
+  const addRemove = () => {
+    const favoriteList = store.getState().favorite.favList    
+    if (favoriteList.find((el) => Number(el) === Number(titleId))) {
+      dispatch(removeFavorite(elem.anime_id))
+      setToFavBtn(true)
+    } else {
+      dispatch(addFavorite(elem.anime_id))
+      setToFavBtn(false)
+    }
+  }
   const styles = {
     container: "container mx-auto",
     wrapper: "flex gap-10 justify-between",
@@ -53,6 +65,12 @@ export default function TitlePage() {
   // } = elem;
   useEffect(() => {
     setElem(DATA_ROOT.find((el) => Number(el.anime_id) === Number(titleId)));
+    const favoriteList = store.getState().favorite.favList
+    if (!favoriteList.find((el) => Number(el) === Number(titleId))) {
+      setToFavBtn(true)
+    } else {
+      setToFavBtn(false)
+    }
   }, [titleId]);
   return (
     elem && (
@@ -63,7 +81,7 @@ export default function TitlePage() {
             <img src={elem.image_url} alt={elem.title} />
             <StarRating />
             <div>{elem.anime_id}</div>
-            <button className={styles.button} onClick={() => dispatch(add(elem.anime_id))}>Add</button>
+            <button className={styles.button} onClick={() => addRemove()}>{toFavBtn ? 'Add' : 'Remove'}</button>
           </div>
           <div>
             <h3 className={styles.h3}>Information</h3>
