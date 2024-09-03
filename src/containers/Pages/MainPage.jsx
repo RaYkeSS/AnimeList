@@ -23,18 +23,6 @@ export default function AnimePage() {
         <li>Anime pages division</li>
         <li><s>To the top button</s></li>
       </ul>
-      <h1 className="font-bold text-xl mb-5">Global Plans</h1>
-      <ul>
-        <li>
-          To SQL database
-        </li>
-        <li>
-          Auth
-        </li>
-        <li>
-          Rebuild with ssr
-        </li>
-      </ul>
     </div>
   );
 }
