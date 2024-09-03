@@ -63,7 +63,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [![React][React.js]][React-url]
-* <a to="[tailwindcss.com]"><img src=[tailwindcss-url] width="200" height="200" />Tailwindcss</a>
+* <a href="[tailwindcss.com]"><img src=[tailwindcss-url] width="200" height="200" alt="Tailwindcss" /></a>
 * [![Tailwindcss][tailwindcss.com]][tailwindcss-url]
 * [![CreateReactApp][CreateReactApp]][CreateReactApp-url]
 
