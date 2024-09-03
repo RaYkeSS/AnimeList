@@ -64,7 +64,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 * [![React][React.js]][React-url]
 * <a href="[tailwindcss.com]"><img src=[tailwindcss-url] width="200" height="200" alt="Tailwindcss" /></a>
-* <span width="10" height="10">[![Tailwindcss][tailwindcss.com]][tailwindcss-url]</span>
+* <span style="width: 200px; height:150px;">[![Tailwindcss][tailwindcss.com]][tailwindcss-url]</span>
 * [![CreateReactApp][CreateReactApp]][CreateReactApp-url]
 
 
