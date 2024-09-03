@@ -2,7 +2,7 @@ export default function AnimePage() {
   return (
     <div>
       <h1 className="font-bold text-xl mb-5">Todo</h1>
-      <ul className="text-lg">
+      <ul className="text-lg mb-5">
         <li>
           <s>Search</s>
         </li>
@@ -19,10 +19,21 @@ export default function AnimePage() {
         <li>Search show more</li>
         <li>HOC</li>
         <li>Error page</li>
-        <li>Auth</li>
         <li>Filter</li>
         <li>Anime pages division</li>
         <li><s>To the top button</s></li>
+      </ul>
+      <h1 className="font-bold text-xl mb-5">Global Plans</h1>
+      <ul>
+        <li>
+          To SQL database
+        </li>
+        <li>
+          Auth
+        </li>
+        <li>
+          Rebuild with ssr
+        </li>
       </ul>
     </div>
   );
