@@ -63,9 +63,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [![React][React.js]][React-url]
-* <a href="[tailwindcss.com]"><img src="https://tailwindcss.com/_next/static/media/tailwindcss-logotype-white.944c5d0ef628083bb316f9b3d643385c86bcdb3d.svg" width="200" height="200" alt="Tailwindcss" /></a>
-* <span style="width: 200px; height:150px;">[![Tailwindcss][tailwindcss.com]][tailwindcss-url]</span>
-* [![CreateReactApp][CreateReactApp]][CreateReactApp-url]
+* [![Tailwind][tailwindcss]][tailwindcss-url]
+* [![ReactRouter][ReactRouter]][ReactRouter-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -210,7 +209,7 @@ Project Link: [https://github.com/RaYkeSS/AnimeList](https://github.com/RaYkeSS/
 <!-- Stack -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[CreateReactApp]: https://create-react-app.dev/img/logo.svg
-[CreateReactApp-url]: https://create-react-app.dev/
-[tailwindcss.com]: https://tailwindcss.com/_next/static/media/tailwindcss-logotype-white.944c5d0ef628083bb316f9b3d643385c86bcdb3d.svg
+[ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=flat&logo=react-router&logoColor=white
+[ReactRouter-url]: https://reactrouter.com/
+[tailwindcss]: https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwind-css&logoColor=white
 [tailwindcss-url]: https://tailwindcss.com/
