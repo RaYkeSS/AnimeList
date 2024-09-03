@@ -56,8 +56,6 @@ Project to create a website for creating and evaluating a collection of watched 
 - [ ] Error Page layout
 - [ ] Filter
 
-See the [open issues](https://github.com/RaYkeSS/AnimeList/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
